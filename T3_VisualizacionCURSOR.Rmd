@@ -6,6 +6,7 @@ output: html_document
 ---
 
 Figura 1. 
+
 ```{r}
 library("ggplot2")
 library("dplyr")
@@ -42,16 +43,11 @@ y <- x * sin(1/x) + rnorm(n) / 25
 
 df <- data.frame(x = x, y = y)
 
-p2 <- ggplot(df, aes(x, y)) + geom_point(alpha = 0.3, col = "navyblue") +
+P2 <- ggplot(df, aes(x, y)) + geom_point(alpha = 0.3, col = "navyblue") +
   geom_smooth(se = FALSE) + scale_x_continuous(limits = c(0, 0.5)) +
   scale_y_continuous(limits = c(-0.3, 0.4)) + theme_bw()
 
-ggarrange(p5, 
-          ggarrange(p7, 
-                    ggarrange(p2, p4, p6, p8, ncol = 2, nrow = 2, 
-                              labels = c("B", "C", "D", "E")), 
-                    ncol = 2, labels = "F")
-          ,labels = "A", nrow = 2, common.legend = TRUE)
+ggarrange(P5,ggarrange(P7,ggarrange(P2, P4, P6, P8, ncol = 2, nrow = 2, labels = c("B", "C", "D", "E")), ncol = 2, labels = "F"),labels = "A", nrow = 2, common.legend = TRUE)
 ```
 Figura 2. 
 ```{r 2do}
